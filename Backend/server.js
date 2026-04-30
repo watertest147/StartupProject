@@ -1,12 +1,23 @@
-// node server.js
 import express from 'express'
 import cors from 'cors'
+import dotenv from 'dotenv'
 import authRoutes from './routes/auth.js'
 
+dotenv.config()
+
 const app = express()
-app.use(cors())
+
+app.use(cors({
+  origin: '*'
+}))
 app.use(express.json())
 
+// routes
 app.use('/api', authRoutes)
 
-app.listen(3000, () => console.log('Server running on port 3000'))
+// ใช้ PORT จาก env (สำคัญมาก)
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`)
+})

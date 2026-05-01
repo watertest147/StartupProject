@@ -7,6 +7,9 @@ export default defineConfig({
   plugins: [react(), tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
+      devOptions: {
+        enabled: true
+      },
       manifest: {
         name: 'Startup App',
         short_name: 'Startup',

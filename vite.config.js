@@ -6,10 +6,12 @@ import { VitePWA } from 'vite-plugin-pwa'
 export default defineConfig({
   plugins: [react(), tailwindcss(),
     VitePWA({
+      // registerType: 'autoUpdate',
+      // devOptions: {
+      //   enabled: true
+      // },
       registerType: 'autoUpdate',
-      devOptions: {
-        enabled: true
-      },
+      injectRegister: 'auto',
       manifest: {
         name: 'Startup App',
         short_name: 'Startup',

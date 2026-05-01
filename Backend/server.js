@@ -14,7 +14,9 @@ app.use(express.json())
 
 // routes
 app.use('/api', authRoutes)
-
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'API OK' })
+})
 // ใช้ PORT จาก env (สำคัญมาก)
 const PORT = process.env.PORT || 3000
 

@@ -104,8 +104,8 @@ export default function Register() {
   setLoading(true)
 
   try {
-    const res = await fetch('http://localhost:3000/api/register', {
-       method: 'POST',
+    const res = await fetch('https://startupproject.onrender.com/api/register', {
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form)
     })

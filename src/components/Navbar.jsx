@@ -54,37 +54,43 @@ export default function Navbar() {
           </motion.a>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-1">
-            {navItems.map((item, i) => {
-              const Icon = item.icon
-              return (
-                <motion.a
-                  key={i}
-                  href={item.href}
-                  onClick={() => setActiveItem(i)}
-                  className={`
-                    relative flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-medium transition-colors
-                    ${activeItem === i
-                      ? 'text-violet-600 bg-violet-50'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                    }
-                  `}
-                  whileHover={{ y: -1 }}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <Icon size={14} strokeWidth={2} />
-                  {item.label}
-                  {activeItem === i && (
-                    <motion.div
-                      layoutId="nav-pill"
-                      className="absolute inset-0 bg-violet-50 rounded-xl -z-10"
-                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                    />
-                  )}
-                </motion.a>
-              )
-            })}
-          </div>
+            <div className="hidden md:flex items-center gap-1">
+              {navItems.map((item, i) => {
+                const Icon = item.icon
+                return (
+                  <motion.a
+                    key={i}
+                    href={item.href}
+                    onClick={() => setActiveItem(i)}
+                    className={`
+                      relative flex items-center gap-1.5 cursor-pointer px-3.5 py-2 rounded-xl text-sm font-medium transition-colors group
+                      ${activeItem === i
+                        ? 'text-violet-600 bg-violet-50'
+                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                      }
+                    `}
+                    whileHover={{ y: -1 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    <Icon size={14} strokeWidth={2} />
+
+                    {/* ข้อความ + เส้นใต้ */}
+                    <span className="relative">
+                      {item.label}
+                      <span className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-violet-500 rounded-full transition-all duration-300 group-hover:w-full" />
+                    </span>
+
+                    {activeItem === i && (
+                      <motion.div
+                        layoutId="nav-pill"
+                        className="absolute inset-0 bg-violet-50 rounded-xl -z-10"
+                        transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                      />
+                    )}
+                  </motion.a>
+                )
+              })}
+            </div>
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
@@ -137,7 +143,7 @@ export default function Navbar() {
                   <motion.a
                     key={i}
                     href={item.href}
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:text-violet-600 hover:bg-violet-50 transition-colors"
+                    className="flex items-center cursor-pointer gap-3 px-4 py-3 rounded-xl text-slate-600 hover:text-violet-600 hover:bg-violet-50 transition-colors"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}

@@ -40,7 +40,7 @@ export default function InstallButton() {
         onClick={handleInstall}
         whileHover={{ y: -1, boxShadow: '0 8px 24px rgba(99,102,241,.35)' }}
         whileTap={{ scale: 0.97 }}
-        className="flex items-center gap-2 bg-linear-to-r from-sky-500 to-indigo-500 text-white font-semibold text-sm px-5 py-3 rounded-xl shadow-md shadow-indigo-200"
+        className="flex items-center cursor-pointer gap-2 bg-linear-to-r from-sky-500 to-indigo-500 text-white font-semibold text-sm px-5 py-3 rounded-xl shadow-md shadow-indigo-200"
       >
         <Download size={15} />
         ดาวน์โหลดแอปฟรี

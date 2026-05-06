@@ -58,36 +58,60 @@ export default function Navbar() {
               {navItems.map((item, i) => {
                 const Icon = item.icon
                 return (
-                  <motion.a
-                    key={i}
-                    href={item.href}
-                    onClick={() => setActiveItem(i)}
-                    className={`
-                      relative flex items-center gap-1.5 cursor-pointer px-3.5 py-2 rounded-xl text-sm font-medium transition-colors group
-                      ${activeItem === i
-                        ? 'text-violet-600 bg-violet-50'
-                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                      }
-                    `}
-                    whileHover={{ y: -1 }}
-                    whileTap={{ scale: 0.97 }}
-                  >
-                    <Icon size={14} strokeWidth={2} />
+                  // <motion.a
+                  //   key={i}
+                  //   href={item.href}
+                  //   onClick={() => setActiveItem(i)}
+                  //   className={`
+                  //     relative flex items-center gap-1.5 cursor-pointer px-3.5 py-2 rounded-xl text-sm font-medium transition-colors group
+                  //     ${activeItem === i
+                  //       ? 'text-violet-600 bg-violet-50'
+                  //       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  //     }
+                  //   `}
+                  //   whileHover={{ y: -1 }}
+                  //   whileTap={{ scale: 0.97 }}
+                  // >
+                  //   <Icon size={14} strokeWidth={2} />
 
-                    {/* ข้อความ + เส้นใต้ */}
-                    <span className="relative">
-                      {item.label}
-                      <span className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-violet-500 rounded-full transition-all duration-300 group-hover:w-full" />
-                    </span>
+                  //   {/* ข้อความ + เส้นใต้ */}
+                  //   <span className="relative">
+                  //     {item.label}
+                  //     <span className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-violet-500 rounded-full transition-all duration-300 group-hover:w-full" />
+                  //   </span>
 
-                    {activeItem === i && (
-                      <motion.div
-                        layoutId="nav-pill"
-                        className="absolute inset-0 bg-violet-50 rounded-xl -z-10"
-                        transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                      />
-                    )}
-                  </motion.a>
+                  //   {activeItem === i && (
+                  //     <motion.div
+                  //       layoutId="nav-pill"
+                  //       className="absolute inset-0 bg-violet-50 rounded-xl -z-10"
+                  //       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  //     />
+                  //   )}
+                  // </motion.a>
+                  <motion.div
+                      key={i}
+                      whileHover={{ y: -1 }}
+                      whileTap={{ scale: 0.97 }}
+                    >
+                      <Link
+                        to={item.path}
+                        onClick={() => setActiveItem(i)}
+                        className={`
+                          relative flex items-center gap-1.5 cursor-pointer px-3.5 py-2 rounded-xl text-sm font-medium transition-colors group
+                          ${activeItem === i
+                            ? 'text-violet-600 bg-violet-50'
+                            : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                          }
+                        `}
+                      >
+                        <Icon size={14} strokeWidth={2} />
+
+                        <span className="relative">
+                          {item.label}
+                          <span className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-violet-500 rounded-full transition-all duration-300 group-hover:w-full" />
+                        </span>
+                      </Link>
+                    </motion.div>
                 )
               })}
             </div>
